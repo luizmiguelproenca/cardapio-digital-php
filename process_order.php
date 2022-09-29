@@ -25,7 +25,12 @@ include('inc/header.php');
 				$total = 0;
 				$orderDate = date('Y-m-d');
 				if (isset($_SESSION["cart"])) {
+					$cont = 0;
 					foreach ($_SESSION["cart"] as $keys => $values) {
+						$nomeItem[] = $values["item_name"];
+						$preco[] = $values["item_price"];
+						$qtd[] = $values["item_quantity"];
+
 						$order->item_id = $values["item_id"];
 						$order->item_name = $values["item_name"];
 						$order->item_price = $values["item_price"];
@@ -37,8 +42,64 @@ include('inc/header.php');
 						$order->cliente_observacao = "";
 						$order->order_date = $orderDate;
 						$order->order_id = $_GET['order'];
+						$cont++;
 						$order->insert();
 					}
+					?>
+					<script>
+
+					var texto = 
+					encodeURIComponent(`
+✅ NOVO PEDIDO 
+-----------------------------
+▶ RESUMO DO PEDIDO 
+
+ Pedido #<?php echo $_GET['order']; ?>
+ 
+<?php 
+$subtotal = 0;
+for($i = 0; $i < $cont; $i++)
+{
+echo "*".$qtd[$i]."x* ";	
+echo "_".$nomeItem[$i]."_ ";
+echo "*(R$ ".$preco[$i].")*\n";
+$subtotal += $preco[$i] * $qtd[$i];
+}
+?>
+
+
+SUBTOTAL: R$ <?php echo $subtotal;?>
+
+ ------------------------------------------
+▶ Dados para entrega 
+ 
+Nome: <?php echo $nome."\n"?>
+Endereço: <?php echo $_POST['rua'] .", nº: ". $_POST['numero']."\n"?>
+Bairro: <?php echo $_POST['bairro']."\n"?>
+Complemento: <?php echo $_POST['complemento']."\n"?>
+Telefone: <?php echo $contato."\n"?>
+
+Taxa de Entrega: R$ 0,00
+
+ 🕙 Tempo de Entrega: aprox. 45 min
+
+ ------------------------------- 
+▶ TOTAL = R$ <?php echo $subtotal."\n"?>
+ ------------------------------ 
+
+▶ PAGAMENTO 
+ 
+Pagamento no cartão 
+Cartão: Mastercard`)
+					var url = "https://wa.me/5511950428309?text=" + texto;
+				
+					function openInNewTab(url) {
+						var win = window.open(url, '_blank');
+						win.focus();
+					}
+					setTimeout(()=>{openInNewTab(url)}, 1000);
+				</script>
+				<?php
 					unset($_SESSION["cart"]);
 				}
 			?>

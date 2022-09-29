@@ -4,7 +4,7 @@ include_once 'class/Produto.php';
 
 $database = new Database();
 $db = $database->getConexao();
-$food = new Produtos($db);
+$food = new Produto($db);
 
 include('inc/header.php');
 ?>

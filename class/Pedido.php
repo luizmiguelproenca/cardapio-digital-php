@@ -3,10 +3,15 @@ class Pedido {
    
 	private $pedidosTable = 'pedidosvendas';	
 	private $con;
+	public $item_name;
 	
 	public function __construct($db){
         $this->con = $db;
-    }	    
+    }
+	
+	public function setNome($nome){
+		$this->item_name = $nome;
+	}
 	
 	public function insert(){		
 		if($this->item_name) {
