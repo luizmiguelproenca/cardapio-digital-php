@@ -41,3 +41,9 @@ footer{
 input{
   border: 5px solid white;
 }
+
+.box-search {
+  display: flex;
+  gap: .1%;
+  justify-content: center;
+}

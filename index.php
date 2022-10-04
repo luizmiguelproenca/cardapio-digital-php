@@ -13,6 +13,15 @@ include('inc/header.php');
 <link rel="stylesheet" type="text/css" href="css/foods.css">
 <?php include('inc/container.php'); ?>
 
+<form class="box-search" method="GET">
+	<input type="search" name="q" class="form-control w-25" placeholder="Pesquisar">
+	<button type="submit" name="pesquisar" value="Pesquisar" class="btn btn-primary">
+		<svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+		  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+		</svg>
+	</button>
+</form>
+
 <div class="content">
 	<div class="container-fluid">
 		<div class='row'>
@@ -20,8 +29,12 @@ include('inc/header.php');
 		</div>
 		<div class='row'>
 			<?php
-			$result = $food->itemsList();
 			$count = 0;
+			if(isset($_GET['q'])){
+				$result = $food->itemsSearch($_GET['q']);
+			}else{
+				$result = $food->itemsList();
+			}
 			while ($item = $result->fetch_assoc()) {
 				if ($count == 0) {
 					echo "<div class='row'>";

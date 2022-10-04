@@ -14,5 +14,12 @@ class Produto {
 		$result = $stmt->get_result();		
 		return $result;	
 	}
+
+	public function itemsSearch($q){
+		$stmt = $this->con->prepare("SELECT id, name, price, description, images, status FROM ".$this->produtosTable. " where status=1 AND name like '%$q%' or description like '%$q%'");				
+		$stmt->execute();		
+		$result = $stmt->get_result();	
+		return $result;
+	}
 }
 ?>
