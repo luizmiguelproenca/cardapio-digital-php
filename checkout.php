@@ -35,14 +35,6 @@ include('inc/header.php');
 			$orderNumber = $randNumber1;
 			include('form.php');
 			?>
-			<div class="">
-				<h3>Detalhes do pedido</h3>
-				<p id="Itens"><strong>Itens</strong>: <?php for ($i = 0; $i < $cont; $i++) echo "<br> " . $qtd[$i] . " " . $itens[$i] . " - R$ " . $precos[$i] * $qtd[$i] ?></p>
-				<p id="Total-Itens"><strong>Total Itens</strong>: R$ <?php echo $orderTotal; ?></p>
-				<p id="Taxa"><strong>Taxa de entrega</strong>: R$ 0</p>
-				<p id="TotalPedido"><strong>Total pedido</strong>: R$ <?php echo $orderTotal; ?></p>
-				<p><button id="btn" form="dados" type="submit" name="enviar" class="btn btn-warning">Confirmar Pedido</button></a></p>
-			</div>
 		</div>
 	</div>
 

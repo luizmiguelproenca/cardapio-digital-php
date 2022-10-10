@@ -83,7 +83,7 @@ include('inc/header.php');
 					?>
 						<tr>
 							<td><?php echo $values["item_name"]; ?></td>
-							<td><?php echo $values["item_quantity"] ?></td>
+							<td><?php echo $values["item_quantity"]?></td>
 							<td>R$ <?php echo $values["item_price"]; ?></td>
 							<td>R$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2); ?></td>
 							<td><a href="cart.php?action=delete&id=<?php echo $values["food_id"]; ?>"><span class="text-danger">Remover</span></a></td>

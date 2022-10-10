@@ -22,6 +22,8 @@ include('inc/header.php');
 				$endereco = $_POST['rua'] . ", " . $_POST['numero'] . " - " . $_POST['bairro'] . " - " . $_POST['cidade'] . "-" . $_POST['uf'] . " " . $_POST['complemento'];
 				$nome = $_POST['nome'];
 				$contato = $_POST['celular'];
+				$obs = $_POST['obs'];
+				$opc_pgto = $_POST['forma_pagamento'];
 				$total = 0;
 				$orderDate = date('Y-m-d');
 				if (isset($_SESSION["cart"])) {
@@ -38,71 +40,80 @@ include('inc/header.php');
 						$order->cliente_nome = $nome;
 						$order->cliente_contato = $contato;
 						$order->cliente_endereco = $endereco;
-						$order->cliente_opc_pgt = 1;
-						$order->cliente_observacao = "";
+						$order->cliente_opc_pgt = $opc_pgto;
+						$order->cliente_observacao = $obs;
 						$order->order_date = $orderDate;
 						$order->order_id = $_GET['order'];
 						$cont++;
 						$order->insert();
 					}
-					?>
+			?>
 					<script>
-
-					var texto = 
-					encodeURIComponent(`
+						var texto =
+							encodeURIComponent(`
 ✅ NOVO PEDIDO 
 -----------------------------
 ▶ RESUMO DO PEDIDO 
 
- Pedido #<?php echo $_GET['order']; ?>
+Pedido #<?php echo $_GET['order']; ?>
  
-<?php 
-$subtotal = 0;
-for($i = 0; $i < $cont; $i++)
-{
-echo "*".$qtd[$i]."x* ";	
-echo "_".$nomeItem[$i]."_ ";
-echo "*(R$ ".$preco[$i].")*\n";
-$subtotal += $preco[$i] * $qtd[$i];
-}
+<?php
+	$subtotal = 0;
+	for ($i = 0; $i < $cont; $i++) {
+		echo "*" . $qtd[$i] . "x* ";
+		echo "_" . $nomeItem[$i] . "_ ";
+		echo "*(R$ " . $preco[$i] . ")*\n";
+		$subtotal += $preco[$i] * $qtd[$i];
+	}
 ?>
 
 
-SUBTOTAL: R$ <?php echo $subtotal;?>
+SUBTOTAL: R$ <?php echo $subtotal; ?>
 
- ------------------------------------------
+------------------------------------------
 ▶ Dados para entrega 
  
-Nome: <?php echo $nome."\n"?>
-Endereço: <?php echo $_POST['rua'] .", nº: ". $_POST['numero']."\n"?>
-Bairro: <?php echo $_POST['bairro']."\n"?>
-Complemento: <?php echo $_POST['complemento']."\n"?>
-Telefone: <?php echo $contato."\n"?>
+Nome: <?php echo $nome . "\n" ?>
+Endereço: <?php echo $_POST['rua'] . ", nº: " . $_POST['numero'] . "\n" ?>
+Bairro: <?php echo $_POST['bairro'] . "\n" ?>
+Complemento: <?php echo $_POST['complemento'] . "\n" ?>
+Telefone: <?php echo $contato . "\n" ?>
 
 Taxa de Entrega: R$ 0,00
 
- 🕙 Tempo de Entrega: aprox. 45 min
+🕙 Tempo de Entrega: aprox. 45 min
 
- ------------------------------- 
-▶ TOTAL = R$ <?php echo $subtotal."\n"?>
- ------------------------------ 
+------------------------------- 
+▶ TOTAL = R$ <?php echo $subtotal . "\n" ?>
+------------------------------ 
 
 ▶ PAGAMENTO 
- 
-Pagamento no cartão 
-Cartão: Mastercard`)
-					var url = "https://wa.me/5511950428309?text=" + texto;
-				
-					function openInNewTab(url) {
-						var win = window.open(url, '_blank');
-						win.focus();
-					}
-					setTimeout(()=>{openInNewTab(url)}, 1000);
-				</script>
+<?php
+switch($opc_pgto){
+	case 1:
+		echo "\nPagamento no Pix\nChave: 11950428309";
+		break;
+	case 2:
+		echo "\nPagamento no cartão\nDébito/Crédito";
+		break;
+	case 3:
+		echo "\nPagamento em Dinheiro\nTroco para: R$ ".$_POST['troco'];
+		break;
+}
+// Pagamento no cartão 
+// Cartão: Mastercard
+?>`)
+						var url = "https://api.whatsapp.com/send?phone=5511950428309&text=" + texto;
+
+						function openInNewTab() {
+							var win = window.open(url, '_blank');
+							win.focus();
+						}
+					</script>
 				<?php
 					unset($_SESSION["cart"]);
 				}
-			?>
+				?>
 				<div class="container">
 					<div class="jumbotron">
 						<h1 class="text-center" style="color: green;"><span class="glyphicon glyphicon-ok-circle"></span> Pedido Confirmado.</h1>
@@ -114,6 +125,9 @@ Cartão: Mastercard`)
 				<h3 class="text-center"> <strong>Número do seu pedido:</strong> <span style="color: blue;"><?php echo $_GET['order']; ?></span> </h3>
 
 				<h3 class="text-center">Desfrute mais do <a href="index.php">Nosso Cardápio!</a></h3>
+				<div class="d-grid gap-2 d-md-block" style="text-align: center">
+					<button class="btn btn-primary" type="button" onclick="openInNewTab(url)">Enviar pedido pelo whatsapp</button>
+				</div>
 			<?php } else { ?>
 				<h3 class="text-center">Desfrute mais da <a href="index.php">Nosso Cardápio!</a></h3>
 			<?php } ?>
