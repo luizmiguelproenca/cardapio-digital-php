@@ -103,7 +103,7 @@ switch($opc_pgto){
 // Pagamento no cartão 
 // Cartão: Mastercard
 ?>`)
-						var url = "https://api.whatsapp.com/send?phone=5511950428309&text=" + texto;
+						var url = "https://api.whatsapp.com/send?phone=5511977681947&text=" + texto;
 
 						function openInNewTab() {
 							var win = window.open(url, '_blank');

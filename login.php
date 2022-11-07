@@ -11,7 +11,7 @@ $produto = new Produto($db);
 $admin = new Admin($db);
 
 if($admin->loggedIn()) {	
-	header("Location: testLogin.php");	
+	header("Location: admin.php");	
 }
 
 include('inc/header.php');
@@ -21,9 +21,9 @@ if (!empty($_POST["login"]) && !empty($_POST["email"]) && !empty($_POST["passwor
     $admin->email = $_POST["email"];
     $admin->password = $_POST["password"];
     if ($admin->login()) {
-        header("Location: testLogin.php");
+        header("Location: admin.php");
     } else {
-        $loginMessage = 'Login errado!';
+        $loginMessage = 'Dados incorretos!';
     }
 } else {
     $loginMessage = 'Preencha todos os campos';
@@ -38,7 +38,7 @@ if (!empty($_POST["login"]) && !empty($_POST["email"]) && !empty($_POST["passwor
         <div class="col-md-6">
             <div class="panel panel-info">
                 <div class="panel-heading" style="background:#5bc0de;color:white;">
-                    <div class="panel-title">Customer Log In</div>
+                    <div class="panel-title">Admin</div>
                 </div>
                 <div style="padding-top:30px" class="panel-body">
                     <?php if ($loginMessage != '') { ?>
@@ -57,7 +57,7 @@ if (!empty($_POST["login"]) && !empty($_POST["email"]) && !empty($_POST["passwor
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                             <input type="password" class="form-control" id="password" name="password" value="<?php if (!empty($_POST["password"])) {
                                                                                                                     echo $_POST["password"];
-                                                                                                                } ?>" placeholder="password" required>
+                                                                                                                } ?>" placeholder="senha" required>
                         </div>
 
                         <div style="margin-top:10px" class="form-group">

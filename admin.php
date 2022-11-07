@@ -16,6 +16,14 @@ if(!$admin->loggedIn()) {
 ?>
 
 <h1>LOGADO</h1>
-<h2>Aqui irei fazer a pagina do ADM do cardápio</h2>
+<h2>Aqui irei fazer a página do ADM do cardápio</h2>
 
-<a href="desloga.php">SAIA</a>
+<a href="addproduto.php">Adicionar um produto</a>
+
+<br>
+
+<a href="addcategoria.php">Adicionar uma categoria</a>
+
+<br>
+
+<a href="desloga.php">Sair</a>
