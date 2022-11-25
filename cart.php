@@ -71,9 +71,9 @@ include('inc/header.php');
 					<thead class="thead-dark">
 						<tr>
 							<th width="40%">Nome</th>
-							<th width="10%">Quantidade</th>
+							<th width="10%">Qtd</th>
 							<th width="20%">Preço Uni.</th>
-							<th width="15%">Total</th>
+							<th width="25%">Subtotal</th>
 							<th width="5%">Acão</th>
 						</tr>
 					</thead>
@@ -99,7 +99,7 @@ include('inc/header.php');
 					</tr>
 				</table>
 				<?php
-				echo '<a href="cart.php?action=empty"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Limpar Carrinho</button></a>&nbsp;<a href="index.php"><button class="btn btn-warning">Adicionar mais itens</button></a>&nbsp;<a href="checkout.php"><button class="btn btn-success pull-right"><span class="glyphicon glyphicon-share-alt"></span> Confirmar</button></a>';
+				echo '<div><a href="cart.php?action=empty"><button class="btn btn-danger"><span class="bi bi-trash-fill"></span> Limpar Carrinho</button></a>&nbsp;<a href="index.php"><button class="btn btn-warning">Adicionar mais itens</button></a>&nbsp;<a href="checkout.php"><button class="btn btn-success float-end"><span class="bi bi-arrow-right"></span> Confirmar</button></a></div>';
 				?>
 			<?php
 			} elseif (empty($_SESSION["cart"])) {

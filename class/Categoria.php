@@ -14,5 +14,13 @@ class Categoria {
 		$result = $stmt->get_result();		
 		return $result;	
 	}
+
+	public function nomeCategoria($id){		
+		$stmt = $this->con->prepare("SELECT nome FROM ".$this->categoriasTable. " WHERE id = ".$id);				
+		$stmt->execute();			
+		$result = $stmt->get_result();		
+		$item = $result->fetch_assoc();
+		return $item['nome'];	
+	}
 }
 ?>

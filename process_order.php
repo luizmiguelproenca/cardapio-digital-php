@@ -126,7 +126,7 @@ switch($opc_pgto){
 
 				<h3 class="text-center">Desfrute mais do <a href="index.php">Nosso Cardápio!</a></h3>
 				<div class="d-grid gap-2 d-md-block" style="text-align: center">
-					<button class="btn btn-primary" type="button" onclick="openInNewTab(url)">Enviar pedido pelo whatsapp</button>
+					<button class="btn btn-success" type="button" onclick="openInNewTab(url)"><i class="bi bi-whatsapp me-2"></i>Enviar pedido pelo whatsapp</button>
 				</div>
 			<?php } else { ?>
 				<h3 class="text-center">Desfrute mais da <a href="index.php">Nosso Cardápio!</a></h3>

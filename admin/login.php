@@ -1,8 +1,8 @@
 <?php
-include_once 'config/Database.php';
-include_once 'class/Produto.php';
-include_once 'class/Categoria.php';
-include_once 'class/Admin.php';
+include_once '../config/Database.php';
+include_once '../class/Produto.php';
+include_once '../class/Categoria.php';
+include_once '../class/Admin.php';
 
 $database = new Database();
 $db = $database->getConexao();
@@ -11,17 +11,17 @@ $produto = new Produto($db);
 $admin = new Admin($db);
 
 if($admin->loggedIn()) {	
-	header("Location: admin.php");	
+	header("Location: index.php");	
 }
 
-include('inc/header.php');
+include('../inc/header.php');
 
 $loginMessage = '';
 if (!empty($_POST["login"]) && !empty($_POST["email"]) && !empty($_POST["password"])) {
     $admin->email = $_POST["email"];
     $admin->password = $_POST["password"];
     if ($admin->login()) {
-        header("Location: admin.php");
+        header("Location: index.php");
     } else {
         $loginMessage = 'Dados incorretos!';
     }
@@ -31,38 +31,40 @@ if (!empty($_POST["login"]) && !empty($_POST["email"]) && !empty($_POST["passwor
 
 ?>
 
-<title>webdamn.com : Demo Online Food Ordering System with PHP & MySQL</title>
-<?php include('inc/container.php'); ?>
-<div class="content">
-    <div class="container-fluid">
-        <div class="col-md-6">
-            <div class="panel panel-info">
-                <div class="panel-heading" style="background:#5bc0de;color:white;">
-                    <div class="panel-title">Admin</div>
+
+<title>Painel Admin</title>
+<?php include('../inc/container.php'); ?>
+<div class="h-100">
+    <div class="container h-100">
+        <div class="row justify-content-sm-center h-100">
+            <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+                <div class="text-center my-5">
+                    <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
+                    <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="logo" width="100">
                 </div>
-                <div style="padding-top:30px" class="panel-body">
+                <div class="card shadow-lg">
                     <?php if ($loginMessage != '') { ?>
                         <div id="login-alert" class="alert alert-danger col-sm-12"><?php echo $loginMessage; ?></div>
                     <?php } ?>
 
 
-                    <form id="loginform" class="form-horizontal" role="form" method="POST" action="">
-                        <div style="margin-bottom: 25px" class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <form id="loginform" class="needs-validation" role="form" method="POST" action="">
+                        <div style="margin-bottom: 25px" class="mb-3 p-4">
+                            <span class="mb-2 text-muted"><i class="glyphicon glyphicon-user"></i></span>
                             <input type="text" class="form-control" id="email" name="email" value="<?php if (!empty($_POST["email"])) {
                                                                                                         echo $_POST["email"];
                                                                                                     } ?>" placeholder="email" style="background:white;" required>
                         </div>
-                        <div style="margin-bottom: 25px" class="input-group">
+                        <div class="mb-3 p-4">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                             <input type="password" class="form-control" id="password" name="password" value="<?php if (!empty($_POST["password"])) {
                                                                                                                     echo $_POST["password"];
                                                                                                                 } ?>" placeholder="senha" required>
                         </div>
 
-                        <div style="margin-top:10px" class="form-group">
-                            <div class="col-sm-12 controls">
-                                <input type="submit" name="login" value="Login" class="btn btn-info">
+                        <div class="form-group">
+                            <div class="ms-0">
+                                <input type="submit" name="login" value="Login" class="btn btn-primary ms-auto">
                             </div>
                         </div>
                     </form>
