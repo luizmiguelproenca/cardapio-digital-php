@@ -75,12 +75,37 @@ class Admin
 			}
 		}
 	}
+
+	public function updateProduto($id)
+	{
+		if ($this->item_name) {
+
+			$this->item_name = htmlspecialchars(strip_tags($this->item_name));
+			$this->item_idcategory = htmlspecialchars(strip_tags($this->item_idcategory));
+			$this->item_price = htmlspecialchars(strip_tags($this->item_price));
+			$this->item_description = htmlspecialchars(strip_tags($this->item_description));
+			$this->item_image = htmlspecialchars(strip_tags($this->item_image));
+			$this->item_status = htmlspecialchars(strip_tags($this->item_status));
+			$stmt = $this->con->prepare("
+			UPDATE ".$this->produtosTable ." SET `name`='$this->item_name', `id_categoria`='$this->item_idcategory', `price`='$this->item_price', `description`='$this->item_description', `images`='$this->item_image',
+			`status`='$this->item_status' WHERE id = ".$id." ");
+			$stmt->execute();
+		}
+		return $stmt;
+	}
 	
 	public function allProdutos(){		
 		$stmt = $this->con->prepare("SELECT id, name, id_categoria, price, description, images, status FROM ".$this->produtosTable. " order by id_categoria desc");				
 		$stmt->execute();			
 		$result = $stmt->get_result();		
 		return $result;	
+	}
+
+	public function buscarProduto($id){		
+		$stmt = $this->con->prepare("SELECT * FROM ".$this->produtosTable. " WHERE id = ".$id);				
+		$stmt->execute();			
+		$result = $stmt->get_result();	
+		return $result->fetch_assoc();	
 	}
 
 	public function insertCategoria()
@@ -97,18 +122,6 @@ class Admin
 			}
 		}
 	}
-
-	public function buscarProduto($id){		
-		$stmt = $this->con->prepare("SELECT * FROM ".$this->produtosTable. " WHERE id = ".$id);				
-		$stmt->execute();			
-		$result = $stmt->get_result();	
-		return $result->fetch_assoc();	
-	}
-
-
-	
-
-
 
 	public function deleteCategoria($id)
 	{

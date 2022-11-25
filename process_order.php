@@ -79,12 +79,12 @@ Bairro: <?php echo $_POST['bairro'] . "\n" ?>
 Complemento: <?php echo $_POST['complemento'] . "\n" ?>
 Telefone: <?php echo $contato . "\n" ?>
 
-Taxa de Entrega: R$ 0,00
+Taxa de Entrega: R$ 3,00
 
 🕙 Tempo de Entrega: aprox. 45 min
 
 ------------------------------- 
-▶ TOTAL = R$ <?php echo $subtotal . "\n" ?>
+▶ TOTAL = R$ <?php echo ($subtotal + 3). "\n" ?>
 ------------------------------ 
 
 ▶ PAGAMENTO 

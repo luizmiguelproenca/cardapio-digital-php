@@ -76,7 +76,7 @@ $item = $admin->buscarProduto($_GET['id']);
 
         <div>
             <button type="submit" class="btn btn-success" name="submit">
-                Cadastrar</button>
+                Atualizar</button>
             <a href="index.php" class="btn btn-danger">Cancelar</a>
         </div>
     </form>
@@ -97,7 +97,7 @@ if (isset($_SESSION['hash']) && $_SESSION['hash'] == $hash) {
         $admin->item_description = $_POST['desc'];
         $admin->item_image = $_POST['image'];
         $admin->item_status = $_POST['status'];
-        $admin->insertProduto();
+        $admin->updateProduto($_GET['id']);
         echo '<div class="container justify-content-center mt-5"><div class="alert alert-warning alert-dismissible fade show" role="alert">Produto cadastrado com sucesso!
         <button type="button" class="btn-close" data-bs-dismiss="alert"
         aria-lable="Close"></button></div></div>';

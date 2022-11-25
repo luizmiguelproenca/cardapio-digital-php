@@ -68,12 +68,12 @@ include('inc/header.php');
 									<img src="images/<?php echo $item["images"]; ?>" alt="" class="img-fluid">
 									<h5 class="text-dark"><?php echo $item["name"]; ?></h5>
 									<p class="text"><?php echo $item["description"]; ?></p>
-									<h5 class="text-success"><strong>R$ <?php echo $item["price"]; ?></strong></h5>
-									<h6 class="text-info">Qtd.: <input type="number" min="1" max="25" name="quantity" class="form-control" value="1" style="width: 60px;"> </h6>
+									<h5 class="text"><strong>R$ <?php echo $item["price"]; ?></strong></h5>
+									<h6 class="text">Qtd.: <input type="number" min="1" max="25" name="quantity" class="form-control" value="1" style="width: 60px;"> </h6>
 									<input type="hidden" name="item_name" value="<?php echo $item["name"]; ?>">
 									<input type="hidden" name="item_price" value="<?php echo $item["price"]; ?>">
 									<input type="hidden" name="item_id" value="<?php echo $item["id"]; ?>">
-									<input type="submit" name="add" style="margin-top:5px;" class="btn btn-success" value="Add ao carrinho">
+									<input type="submit" name="add" style="margin-top:5px;" class="btn btn-danger" value="Add ao carrinho">
 								</div>
 							</form>
 						</div>
