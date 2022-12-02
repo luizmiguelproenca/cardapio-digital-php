@@ -15,9 +15,10 @@ if (!$admin->loggedIn()) {
 }
 
 include('../inc/header.php');
+include('./inc/nav.php'); 
 ?>
 
-<div class="container">
+<div class="container mt-4">
     <div class="text-center mb-4">
         <h3>Cadastrar Categoria</h3>
         <!-- <p class="text-muted">Complete the form</p> -->

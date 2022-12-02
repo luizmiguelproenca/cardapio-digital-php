@@ -13,7 +13,7 @@ $db = $database->getConexao();
 
                 <div class="input-group input-group mb-3" style="display: flex; margin-top: 15px">
                     <input class="form-control w-80" type="text" name="nome-do-input" placeholder="CEP" id="cep" value="" required="true" />
-                    <button class="btn btn-primary" type="button" onclick="consultaCep()">Consultar</button>
+                    <button class="btn btn-secondary" type="button" onclick="consultaCep()">Consultar</button>
 
                 </div>
 

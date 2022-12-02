@@ -16,10 +16,10 @@ if (!$admin->loggedIn()) {
     header("Location: login.php");
 }
 include('../inc/header.php');
+// include('./inc/nav.php'); 
 ?>
 
-
-<div class="container">
+<div class="container mt-4">
     <div class="text-center mb-4">
         <h3>Editar produto</h3>
         <!-- <p class="text-muted">Complete the form</p> -->
@@ -64,7 +64,7 @@ $item = $admin->buscarProduto($_GET['id']);
 
         <div class="mb-3">
 
-            <label class="form-label" for="">Categoria</label>
+            <label class="form-label" for="">Status</label>
             <select type="text" name="status" class="form-control" id="categoria" required>
                 <option value="<?php echo $item['status'] ?>">Selecione</option>
                 <option value=1>Ativo</option>

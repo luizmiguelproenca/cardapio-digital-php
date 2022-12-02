@@ -19,13 +19,13 @@ include('inc/header.php');
 <div class="p-3">
 	<h4 style="text-align: center">Categorias</h4>
 	<div class="nav justify-content-center">
-		<ul style="display: flex;" class="list-unstyled">
+		<ul style="display: flex; " class="list-unstyled">
 			<?php
 			$result = $categoria->categoriasList(); ?>
-			<li><a href='index.php'>Todas</a></li>
+			<li><a class="btn btn-outline-danger"  style="text-decoration: none;" href='index.php'>Todas</a></li>
 			<?php
 			while ($item = $result->fetch_assoc()) : ?>
-				<li><a style="margin-left: 5px" href='index.php?categoria=<?php echo $item['id'] ?>'><?php echo $item['nome']; ?></a></li>
+				<li><a class="btn btn-outline-danger lg" style="margin-left: 5px; text-decoration: none;" href='index.php?categoria=<?php echo $item['id'] ?>'><?php echo $item['nome']; ?></a></li>
 			<?php endwhile; ?>
 		</ul>
 	</div>

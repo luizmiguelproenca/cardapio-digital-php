@@ -13,8 +13,11 @@ $admin = new Admin($db);
 if (!$admin->loggedIn()) {
 	header("Location: login.php");
 }
-include('../inc/header.php'); 
+include('../inc/header.php');
+include('./inc/nav.php'); 
 ?>
+
+
 
 <!-- <h1>LOGADO</h1>
 <h2>Aqui irei fazer a página do ADM do cardápio</h2>
@@ -24,7 +27,7 @@ include('../inc/header.php');
 <br>
 <a href="desloga.php">Sair</a> -->
 
-	<div class="container">
+	<div class="container mt-4">
 		<?php
 		if(isset($_GET['msg'])){
 			$msg = $_GET['msg'];
