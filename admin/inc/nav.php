@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-dark ">
     <div class="container-fluid">
-        <a class="navbar-brand" href="http://localhost/cardapio/admin/index.php"><i class="bi bi-house-fill"></i> Início</a>
+        <a class="navbar-brand" href="index.php"><i class="bi bi-house-fill"></i> Início</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -12,19 +12,19 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="http://localhost/cardapio/admin/index.php">Início</a>
+                        <a class="nav-link active" aria-current="page" href="index.php">Início</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="http://localhost/cardapio/admin/addproduto.php">Cadastrar Produto</a>
+                        <a class="nav-link active" aria-current="page" href="addproduto.php">Cadastrar Produto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/cardapio/admin/addcategoria.php">Cadastrar Categoria</a>
+                        <a class="nav-link" href="addcategoria.php">Cadastrar Categoria</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/cardapio/index.php" target="_blank">Visualizar Cardápio</a>
+                        <a class="nav-link" href="index.php" target="_blank">Visualizar Cardápio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/cardapio/admin/desloga.php">Logout</a>
+                        <a class="nav-link" href="desloga.php">Logout</a>
                     </li>
                     <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
