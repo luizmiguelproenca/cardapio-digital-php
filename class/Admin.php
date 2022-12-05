@@ -126,7 +126,7 @@ class Admin
 	public function deleteCategoria($id)
 	{
 		$stmt = $this->con->prepare("
-			DELETE * FROM " . $this->categoriasTable . " WHERE id = " . $id);
+			DELETE FROM " . $this->categoriasTable . " WHERE id = " . $id);
 		if ($stmt->execute()) {
 			return true;
 		}
@@ -135,7 +135,7 @@ class Admin
 	public function deleteProduto($id)
 	{
 		$stmt = $this->con->prepare("
-			DELETE * FROM " . $this->produtosTable . " WHERE id = " . $id);
+			DELETE FROM " . $this->produtosTable . " WHERE id = " . $id);
 		if ($stmt->execute()) {
 			return true;
 		}

@@ -86,7 +86,7 @@ if (isset($_SESSION['hash']) && $_SESSION['hash'] == $hash) {
         <button type="button" class="btn-close" data-bs-dismiss="alert"
         aria-lable="Close"></button></div></div>';
         $_SESSION['hash']  = $hash;
-        header("Location: index.php?msg=Novo produto criado com sucesso!");
+        // header("Location: index.php?msg=Novo produto criado com sucesso!");
     }
 }
 ?>

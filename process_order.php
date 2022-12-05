@@ -67,7 +67,7 @@ Pedido #<?php echo $_GET['order']; ?>
 	}
 ?>
 
-
+Observação: R$ <?php echo $obs . "\n" ?>
 SUBTOTAL: R$ <?php echo $subtotal; ?>
 
 ------------------------------------------

@@ -21,7 +21,7 @@
                         <a class="nav-link" href="addcategoria.php">Cadastrar Categoria</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php" target="_blank">Visualizar Cardápio</a>
+                        <a class="nav-link" href="../index.php" target="_blank">Visualizar Cardápio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="desloga.php">Logout</a>
